@@ -20,11 +20,11 @@
   	update notice set title=#{title},contents=#{contents} where num=#{num}
   </update>
   
-	<select id="selectList" parameterType="Map" resultType="NoticeDTO">
+	<select id="selectList" resultType="NoticeDTO">
 	select * from 
 	(select rownum R,N.* from 
 	(select * from notice order by num desc) N) 
-	where R between #{startRow.num} and #{lastRow.num}
+	where R between 1 and 10
 	</select>
   
   </mapper>
