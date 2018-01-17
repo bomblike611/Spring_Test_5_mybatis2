@@ -21,7 +21,7 @@ public class QnaDAO implements BoardDAO {
 	
 	@Override
 	public int totalCount(ListData listData) throws Exception {
-		return sqlSession.selectOne(NAMESPACE+"totalcount", listData);
+		return sqlSession.selectOne(NAMESPACE+"totalCount", listData);
 	}
 	
 	@Override

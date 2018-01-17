@@ -22,6 +22,15 @@
 	</repositories>
 	
 	<dependencies>
+	<!-- fileUploader -->
+	<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+<dependency>
+    <groupId>commons-fileupload</groupId>
+    <artifactId>commons-fileupload</artifactId>
+    <version>1.3.2</version>
+</dependency>
+	
+	
 	<!-- Ojdbc6 -->
 		<dependency>
 			<groupId>com.oracle</groupId>

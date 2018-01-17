@@ -11,6 +11,10 @@
 </head>
 <script type="text/javascript">
 $(function(){
+	var message='${message}';
+	if(message !=''){
+		alert(message);
+	}
 	$("#btn").click(function(){
 		document.frm.submit();
 	});
@@ -76,6 +80,9 @@ $(function(){
 		<c:if test="${page.curBlock < page.totalBlock}">
 			<span class="page" title="${page.lastNum+1}">[다음]</span>
 		</c:if>
+	</div>
+	<div> 
+		<a href="./${board}Write">Write</a>
 	</div>
 </body>
 </html>

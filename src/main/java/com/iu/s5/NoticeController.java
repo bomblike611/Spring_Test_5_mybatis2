@@ -5,11 +5,14 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.w3c.dom.ls.LSException;
 
 import com.iu.board.BoardDTO;
+import com.iu.notice.NoticeDTO;
 import com.iu.notice.NoticeService;
 import com.iu.util.ListData;
 
@@ -31,6 +34,26 @@ public class NoticeController {
 		mv.addObject("board", "notice");
 		mv.setViewName("board/boardList");
 		return mv;
+	}
+	
+	@RequestMapping(value="noticeWrite", method=RequestMethod.POST)
+	public ModelAndView noticeWrite(NoticeDTO noticeDTO) throws Exception{
+		ModelAndView mv=new ModelAndView();
+		int result=noticeService.insert(noticeDTO);
+		if(result>0){
+		mv.addObject("message", "Success");
+		}else{
+		mv.addObject("message", "fail");
+		}
+		mv.addObject("path", "noticeList");
+		mv.setViewName("common/result");
+		return mv;
+	}
+	
+	@RequestMapping(value="noticeWrite",method=RequestMethod.GET)
+	public String noticeWrite(Model model) throws Exception{
+		model.addAttribute("board", "notice");
+		return "board/boardWrite";
 	}
 	
 }
