@@ -5,11 +5,11 @@
   
   <mapper namespace="QnaMapper">
   
-  <select id="selectList" resultType="QnaDTO">
+  <select id="selectList" resultType="QnaDTO" parameterType="ListData">
   select * from
   (select rownum R,Q.* from
   (select * from qna order by num desc) Q) 
-  where R between 1 and 10 order by ref desc, step asc
+  where R between #{startRow} and #{lastRow} order by ref desc, step asc
   </select>
   
   <select id="selectOne" parameterType="int" resultType="QnaDTO">

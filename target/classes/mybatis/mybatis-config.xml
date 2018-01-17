@@ -8,5 +8,6 @@
   <typeAlias type="com.iu.notice.NoticeDTO" alias="NoticeDTO"/>
   <typeAlias type="java.util.Map" alias="Map"/>
   <typeAlias type="com.iu.qna.QnaDTO" alias="QnaDTO"/>
+  <typeAlias type="com.iu.util.ListData" alias="ListData"/>
   </typeAliases>
   </configuration>

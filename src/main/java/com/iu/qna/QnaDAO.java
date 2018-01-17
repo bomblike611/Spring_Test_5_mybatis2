@@ -11,16 +11,22 @@ import org.springframework.stereotype.Repository;
 
 import com.iu.board.BoardDAO;
 import com.iu.board.BoardDTO;
+import com.iu.util.ListData;
 
 @Repository
 public class QnaDAO implements BoardDAO {
 	@Inject
 	private SqlSession sqlSession;
 	private final String NAMESPACE="QnaMapper.";
-
+	
 	@Override
-	public List<BoardDTO> selectList() throws Exception {
-		return sqlSession.selectList(NAMESPACE+"selectList");
+	public int totalCount(ListData listData) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"totalcount", listData);
+	}
+	
+	@Override
+	public List<BoardDTO> selectList(ListData listData) throws Exception {
+		return sqlSession.selectList(NAMESPACE+"selectList",listData);
 	}
 
 	@Override

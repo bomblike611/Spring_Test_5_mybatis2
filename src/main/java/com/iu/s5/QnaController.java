@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.iu.board.BoardDTO;
 import com.iu.qna.QnaDTO;
 import com.iu.qna.QnaService;
+import com.iu.util.ListData;
 
 @Controller
 @RequestMapping(value="/qna/**")
@@ -20,9 +21,10 @@ public class QnaController {
 	private QnaService qnaService;
 	
 	@RequestMapping(value="qnaList")
-	public ModelAndView selectList() throws Exception{
+	public ModelAndView selectList(ListData listData) throws Exception{
 		ModelAndView mv=new ModelAndView();
-		List<BoardDTO> ar=qnaService.selectList();
+		List<BoardDTO> ar=qnaService.selectList(listData);
+		mv.addObject("page", listData);
 		mv.addObject("board", "qna");
 		mv.addObject("list", ar);
 		mv.setViewName("board/boardList");

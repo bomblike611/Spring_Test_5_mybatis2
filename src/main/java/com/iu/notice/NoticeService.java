@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.iu.board.BoardDTO;
 import com.iu.board.BoardService;
+import com.iu.util.ListData;
+import com.iu.util.PageMaker;
 
 public class NoticeService implements BoardService {
 	
@@ -14,9 +16,12 @@ public class NoticeService implements BoardService {
 	}
 
 	@Override
-	public List<BoardDTO> selectList() throws Exception {
-		// TODO Auto-generated method stub
-		return noticeDAO.selectList();
+	public List<BoardDTO> selectList(ListData listData) throws Exception {
+		int totalCount=noticeDAO.totalCount(listData);
+		System.out.println(totalCount);
+		PageMaker pageMaker=new PageMaker();
+		pageMaker.pageMaker(totalCount, listData);
+		return noticeDAO.selectList(listData);
 	}
 
 	@Override
