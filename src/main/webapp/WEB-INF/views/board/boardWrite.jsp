@@ -18,8 +18,8 @@ $(function(){
 	});
 	
 	$("#result").on("click",".X",function(){
-		$(this).remove();
 		$(this).prev().remove();
+		$(this).remove();
 		i--;
 	});
 	
